@@ -193,36 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //function called on getting image either from camera or gallery. Gets file path and starts activity to diplay image
-    @Override
-    protected void onActivityResult(int requestCode,int ResultCode,Intent data){
 
-        if(requestCode == REQUEST_IMAGE_CAPTURE && ResultCode == Activity.RESULT_OK){
-
-            Intent i = new Intent(this,Image_Display_Activity.class);
-            int H = this.getWindow().getDecorView().getHeight();
-            int W = this.getWindow().getDecorView().getWidth();
-            i.putExtra("height",H);
-            i.putExtra("width",W);
-            startActivity(i);
-        }
-        else if(requestCode == RESULT_LOAD_IMAGE && ResultCode == Activity.RESULT_OK){
-
-            pickedImage = data.getData();
-            String[] filePath = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(pickedImage,filePath,null,null,null);
-            cursor.moveToFirst();
-            mCurrentPhotoPath = cursor.getString(cursor.getColumnIndex(filePath[0]));
-            Intent i = new Intent(this,Image_Display_Activity.class);
-            int H = this.getWindow().getDecorView().getHeight();
-            int W = this.getWindow().getDecorView().getWidth();
-            i.putExtra("height",H);
-            i.putExtra("width",W);
-            startActivity(i);
-
-        }
-
-    }
 
     //function to create a file to store the image. It creates new file name with time stamp
     private File createImageFile() throws IOException{
