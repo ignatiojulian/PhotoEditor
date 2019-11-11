@@ -132,20 +132,7 @@ public class Image_Display_Activity extends AppCompatActivity {
                         ActivityOptionsCompat optionsDraw = ActivityOptionsCompat.makeSceneTransitionAnimation(Image_Display_Activity.this,new Pair<View, String>(findViewById(R.id.imageDisplay),(getString(R.string.transition_image))));
                         ActivityCompat.startActivity(Image_Display_Activity.this,drawIntent,optionsDraw.toBundle());
                         break;
-                    case R.id.action_addEmoji:
-                        Intent emojiIntent = new Intent(Image_Display_Activity.this,Emoji_Activity.class);
-                        emojiIntent.putExtra("height",targetH);
-                        emojiIntent.putExtra("width",targetW);
-                        ActivityOptionsCompat optionsEmoji = ActivityOptionsCompat.makeSceneTransitionAnimation(Image_Display_Activity.this,new Pair<View, String>(findViewById(R.id.imageDisplay),(getString(R.string.transition_image))));
-                        ActivityCompat.startActivity(Image_Display_Activity.this,emojiIntent,optionsEmoji.toBundle());
-                        break;
-                    case R.id.action_rotateCrop:
-                        Intent rotCropIntent = new Intent(Image_Display_Activity.this,Rotate_Crop_Activity.class);
-                        rotCropIntent.putExtra("height",targetH);
-                        rotCropIntent.putExtra("width",targetW);
-                        ActivityOptionsCompat rotCropOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(Image_Display_Activity.this,new Pair<View, String>(findViewById(R.id.imageDisplay),(getString(R.string.transition_image))));
-                        ActivityCompat.startActivity(Image_Display_Activity.this,rotCropIntent,rotCropOptions.toBundle());
-                        break;
+                    
                     case R.id.action_tune:
                         Intent tuneIntent = new Intent(Image_Display_Activity.this,Tune_Activity.class);
                         tuneIntent.putExtra("height",targetH);
