@@ -23,7 +23,49 @@
         </provider>
 
         <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Image_Display_Activity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/ImageDisplayTheme"
+            android:screenOrientation="portrait"
+            >
+        </activity>
+        <activity
             android:name=".Add_Text_Activity"
+            android:parentActivityName=".Image_Display_Activity"
+            android:theme="@style/ImageDisplayTheme"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Draw_Activity"
+            android:parentActivityName=".Image_Display_Activity"
+            android:theme="@style/ImageDisplayTheme"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Emoji_Activity"
+            android:parentActivityName=".Image_Display_Activity"
+            android:theme="@style/ImageDisplayTheme"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Rotate_Crop_Activity"
+            android:parentActivityName=".Image_Display_Activity"
+            android:theme="@style/RotCropTheme"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".Tune_Activity"
             android:parentActivityName=".Image_Display_Activity"
             android:theme="@style/ImageDisplayTheme"
             android:screenOrientation="portrait"
