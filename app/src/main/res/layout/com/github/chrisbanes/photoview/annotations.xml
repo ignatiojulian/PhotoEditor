@@ -1,0 +1,5 @@
+<root>
+    <item name='com.github.chrisbanes.photoview.PhotoView'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>
