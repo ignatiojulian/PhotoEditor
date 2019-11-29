@@ -132,7 +132,13 @@ public class Image_Display_Activity extends AppCompatActivity {
                         ActivityOptionsCompat optionsDraw = ActivityOptionsCompat.makeSceneTransitionAnimation(Image_Display_Activity.this,new Pair<View, String>(findViewById(R.id.imageDisplay),(getString(R.string.transition_image))));
                         ActivityCompat.startActivity(Image_Display_Activity.this,drawIntent,optionsDraw.toBundle());
                         break;
-
+                    case R.id.action_addEmoji:
+                        Intent emojiIntent = new Intent(Image_Display_Activity.this,Emoji_Activity.class);
+                        emojiIntent.putExtra("height",targetH);
+                        emojiIntent.putExtra("width",targetW);
+                        ActivityOptionsCompat optionsEmoji = ActivityOptionsCompat.makeSceneTransitionAnimation(Image_Display_Activity.this,new Pair<View, String>(findViewById(R.id.imageDisplay),(getString(R.string.transition_image))));
+                        ActivityCompat.startActivity(Image_Display_Activity.this,emojiIntent,optionsEmoji.toBundle());
+                        break;
                     case R.id.action_rotateCrop:
                         Intent rotCropIntent = new Intent(Image_Display_Activity.this,Rotate_Crop_Activity.class);
                         rotCropIntent.putExtra("height",targetH);
@@ -166,15 +172,15 @@ public class Image_Display_Activity extends AppCompatActivity {
             }
         });
 
-//        ImageView cancelDisplayImage = (ImageView)findViewById(R.id.cancelImageDisplay);
-//        cancelDisplayImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage( getBaseContext().getPackageName() );
-//                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(i);
-//            }
-//        });
+        ImageView cancelDisplayImage = (ImageView)findViewById(R.id.cancelImageDisplay);
+        cancelDisplayImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage( getBaseContext().getPackageName() );
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
 
 
