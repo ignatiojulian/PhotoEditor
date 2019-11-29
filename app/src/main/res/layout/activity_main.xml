@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.photoeditor.MainActivity">
+    android:background="@color/charcoalGrey"
+    tools:context="c">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addFab"
         android:layout_width="157dp"
         android:layout_height="104dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:elevation="10dp"
         android:src="@mipmap/ic_add_a_photo_white_48dp"
         app:backgroundTint="@color/orange"
@@ -21,8 +22,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
 </android.support.constraint.ConstraintLayout>
