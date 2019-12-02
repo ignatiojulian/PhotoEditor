@@ -8,4 +8,9 @@
     <string name="save_changes">Save Changes</string>
     <string name="rotate_right">Rotate Right</string>
     <string name="rotate_left">Rotate Left</string>
+
+    <string name="facebook_app_id">748531872329502</string>
+    <string name="fb_login_protocol_scheme">fb748531872329502</string>
+
+
 </resources>

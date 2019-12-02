@@ -20,6 +20,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,10 +47,49 @@ public class MainActivity extends AppCompatActivity {
     public final int RESULT_LOAD_IMAGE =20;
     public Uri pickedImage;
 
+    private CallbackManager callbackManager;
+    private TextView textView;
+    private LoginButton loginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        textView = findViewById(R.id.textView);
+
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email");
+
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        textView.setText("Successfully logged in");
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        textView.setText("Login canceled");
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (AccessToken.getCurrentAccessToken() == null)
+                    textView.setText("Logged out");
+            }
+        });
+
+
 
         checkPermG();
 
@@ -197,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode,int ResultCode,Intent data){
 
+
         if(requestCode == REQUEST_IMAGE_CAPTURE && ResultCode == Activity.RESULT_OK){
 
             Intent i = new Intent(this,Image_Display_Activity.class);
@@ -222,6 +271,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        callbackManager.onActivityResult(requestCode, ResultCode, data);
+        super.onActivityResult(requestCode, ResultCode, data);
     }
 
     //function to create a file to store the image. It creates new file name with time stamp
@@ -334,5 +385,9 @@ public class MainActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
+
+
+
+
 
 }
